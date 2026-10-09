@@ -1,12 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>TotoB12 Snake</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#333333">
+  <meta name="description" content="A simple Snake game. Play with arrow keys, WASD, or touch controls.">
+  <title>Snake</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <canvas id="gameCanvas" width="600" height="600"></canvas>
-    <script src="script.js"></script>
+  <main class="game">
+    <header>
+      <h1>Snake</h1>
+      <div class="scores">
+        <span>Score <strong id="score">0</strong></span>
+        <span>Best <strong id="best">0</strong></span>
+      </div>
+    </header>
+
+    <div class="board" id="board">
+      <canvas id="gameCanvas" width="600" height="600" aria-label="Snake game board"></canvas>
+      <div class="overlay" id="overlay">
+        <strong id="message">Ready?</strong>
+        <span id="submessage">Arrow keys, WASD, or swipe to move</span>
+        <button id="overlayButton" type="button">Play</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button id="playButton" type="button">Play</button>
+      <button id="restartButton" type="button">Restart</button>
+      <label>Speed
+        <select id="speed">
+          <option value="slow">Chill</option>
+          <option value="normal" selected>Classic</option>
+          <option value="fast">Fast</option>
+        </select>
+      </label>
+      <label><input id="wrap" type="checkbox" checked> Wrap</label>
+      <label><input id="sound" type="checkbox"> Sound</label>
+    </div>
+
+    <div class="pad" aria-label="Touch direction controls">
+      <button type="button" data-direction="up" aria-label="Move up">↑</button>
+      <div class="pad-row">
+        <button type="button" data-direction="left" aria-label="Move left">←</button>
+        <button type="button" data-direction="down" aria-label="Move down">↓</button>
+        <button type="button" data-direction="right" aria-label="Move right">→</button>
+      </div>
+    </div>
+    <p class="hint">Arrow keys / WASD to move · Space to pause · R to restart</p>
+    <p class="sr-only" id="status" role="status" aria-live="polite">Ready to play</p>
+  </main>
 </body>
 </html>
